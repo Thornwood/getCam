@@ -1,23 +1,18 @@
-#import os
-#import sys
+from __future__ import print_function
 import cv2
 
-#cascPath = sys.argv[0]
-#cascPath = os.getcwd()+'/haarcascades/haarcascade_frontalface_default.xml'
-#cascPath1 = os.getcwd()+'/haarcascades/haarcascade_frontalface_alt.xml'
-#cascPath2 = os.getcwd()+'/haarcascades/haarcascade_frontalface_alt2.xml'
-#cascPath3 = os.getcwd()+'/haarcascades/haarcascade_frontalface_alt_tree.xml'
+faceCascade = cv2.CascadeClassifier('C:/Gabor/Programs/anaconda3/Lib/site-packages/cv2/data/haarcascade_frontalface_alt.xml')
 
-faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-#faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-faceCascade.empty()
+if faceCascade.empty():
+    print('--(!)Error loading face cascade')
+    exit(0)
 
 # Capture framse from a camera
 cap = cv2.VideoCapture(0)
 
 while True:
 
-    # reads frames from a camera 
+    # Reads frames from a camera 
     ret, frame = cap.read()
 
     # Display grayscale image
